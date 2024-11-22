@@ -1,6 +1,8 @@
-export default function TodoItem({ todo, toggleTodoItem, deleteTodoItem }) {
-  const { id, title, content, isDone } = todo;
+import useTodo from "../hooks/useTodo";
 
+export default function TodoItem({ todo }) {
+  const { id, title, content, isDone } = todo;
+  const { toggleTodoItem, deleteTodoItem } = useTodo(isDone);
   return (
     <li style={{ border: "1px solid black" }}>
       <p>제목: {title}</p>

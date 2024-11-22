@@ -9,12 +9,20 @@ export const todoSlice = createSlice({
   reducers: {
     addTodo: (state, action) => {
       // TODO: 투두 추가 상태변경 해보세요.
+      state.todoList.push(action.payload);
     },
     deleteTodo: (state, action) => {
       // TODO: 투두 삭제 상태변경 해보세요.
+      state.todoList = state.todoList.filter(
+        (todo) => todo.id !== action.payload
+      );
     },
     toggleTodo: (state, action) => {
       // TODO: 투두의 isDone 속성값(boolean)을 토글링하도록 상태변경 해보세요.
+      const todo = state.todoList.find((todo) => todo.id === action.payload);
+      if (todo) {
+        todo.isDone = !todo.isDone;
+      }
     },
   },
 });
